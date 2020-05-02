@@ -1,0 +1,9 @@
+{
+    "orgData": {
+        "orgName": "apiList.json",
+        "displayName": "FLE API PORTAL",
+        "displayTag": "Home for the galaxies greatest APIs",
+        "displayImage1": "https://banner2.kisspng.com/20180417/yye/kisspng-galactic-empire-logo-decal-star-wars-empire-at-wa-stormtrooper-5ad66f79162801.0405259115240026810908.jpg",
+		"displayImage": "./logo.svg"
+    }
+}

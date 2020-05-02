@@ -1,0 +1,559 @@
+{
+  "id": "id1",
+  "description": "This API \n* calculates a mortgage or a personal loan simulation.\n* calculates a repayment insurance\n\n                    \n",
+  "apiVersion": "1.0.3",
+  "swaggerVersion": "1.1",
+  "basePath": "https://localhost:3000",
+  "resourcePath": "/loan-calculator/rest/v1",
+  "models": {
+    "Costs": {
+      "properties": {
+        "accountManagingCost": {
+          "format": "double",
+          "type": "number"
+        },
+        "commission": {
+          "format": "double",
+          "type": "number"
+        },
+        "interest": {
+          "format": "double",
+          "type": "number"
+        },
+        "totalAccountManagingCost": {
+          "format": "double",
+          "type": "number"
+        },
+        "totalInsuranceCost": {
+          "format": "double",
+          "type": "number"
+        },
+        "totalLoanCost": {
+          "format": "double",
+          "type": "number"
+        },
+        "totalOtherCost": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "SimulationRequest": {
+      "description": "In addition to the required parameters, you have to set one of the following:\n  - amount\n  - monthlyPayments\n",
+      "required": [
+        "loanType",
+        "duration"
+      ],
+      "properties": {
+        "loanType": {
+          "description": "Loan Type: \n  - hypo for a mortgage loan\n  - perso for a personal loan\n",
+          "type": "string"
+        },
+        "amount": {
+          "description": "Loan Amount: If this parameter is set, the monthlyPayments has to be null or empty!\n",
+          "format": "int32",
+          "type": "integer"
+        },
+        "monthlyPaymments": {
+          "description": "Monthly payment: If this parameter is set, the loanAmout has to be null or empty!\n",
+          "format": "double",
+          "type": "number"
+        },
+        "duration": {
+          "description": "Loan duration in month or year, depending on the durationType.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "durationType": {
+          "description": "If this parameter is omitted, the default value is:\n  - month for a personal loan\n  - year for a mortgage loan\n",
+          "type": "string"
+        },
+        "rate": {
+          "description": "Rate",
+          "format": "double",
+          "type": "number"
+        },
+        "bestRate": {
+          "description": "Apply the  best rate.",
+          "default": false,
+          "type": "boolean"
+        },
+        "amountMin": {
+          "description": "Minimum Loan amount.\nIf you set this parameter, also set the amoutMax.\nThis will compute a min an max monthly payments.\n",
+          "format": "int32",
+          "type": "integer"
+        },
+        "amountMax": {
+          "description": "Maximum Loan amount.\nIf you set this parameter, also set the amoutMin.\nThis will compute a min an max monthly payments.\n",
+          "format": "int32",
+          "type": "integer"
+        }
+      },
+      "type": "object"
+    },
+    "SimulationResponse": {
+      "properties": {
+        "amount": {
+          "description": "Loan amount",
+          "format": "double",
+          "type": "number"
+        },
+        "duration": {
+          "description": "Loan duration in month or year, depending on the durationType.",
+          "format": "int32",
+          "type": "integer"
+        },
+        "durationType": {
+          "description": "Duration type:\n  - month\n  - year\n",
+          "type": "string"
+        },
+        "rate": {
+          "description": "Loan rate",
+          "format": "double",
+          "type": "number"
+        },
+        "taeg": {
+          "description": "TAEG (Annual Percentage Rate of charge(APR))",
+          "format": "double",
+          "type": "number"
+        },
+        "monthlyPayments": {
+          "description": "Monthly payments",
+          "format": "double",
+          "type": "number"
+        },
+        "monthlyPaymentsMin": {
+          "description": "Monthly payment for the minimum Loan amount",
+          "format": "int32",
+          "type": "integer"
+        },
+        "monthlyPaymentsMax": {
+          "description": "Monthly payment for the maximum Loan amount",
+          "format": "int32",
+          "type": "integer"
+        },
+        "costs": {
+          "properties": {
+            "totalLoanCost": {
+              "description": "Total loan cost",
+              "format": "double",
+              "type": "number"
+            },
+            "totalInsuranceCost": {
+              "description": "Total insurance cost",
+              "format": "double",
+              "type": "number"
+            },
+            "commission": {
+              "description": "Comission amount",
+              "format": "double",
+              "type": "number"
+            },
+            "totalAccountManagingCost": {
+              "description": "Account managing total cost",
+              "format": "double",
+              "type": "number"
+            },
+            "accountManagingCost": {
+              "description": "Account managing cost",
+              "format": "double",
+              "type": "number"
+            },
+            "interest": {
+              "description": "Interest amount",
+              "format": "double",
+              "type": "number"
+            },
+            "totalOtherCost": {
+              "description": "Total other cost",
+              "format": "double",
+              "type": "number"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "CapacitySimulationRequest": {
+      "properties": {
+        "charges": {
+          "format": "double",
+          "type": "number"
+        },
+        "contribution": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "duration": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "firstPurshase": {
+          "type": "boolean"
+        },
+        "monthlyPayment": {
+          "format": "double",
+          "type": "number"
+        },
+        "nbBorrower": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "propertyLocation": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "propertyType": {
+          "format": "int32",
+          "type": "integer"
+        },
+        "rate": {
+          "format": "double",
+          "type": "number"
+        },
+        "salary": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "CapacitySimulationResponse": {
+      "properties": {
+        "amountMax": {
+          "format": "double",
+          "type": "number"
+        },
+        "costs": {
+          "$ref": "Costs"
+        },
+        "estimatedFees": {
+          "format": "double",
+          "type": "number"
+        },
+        "monthlyPaymentMax": {
+          "format": "double",
+          "type": "number"
+        },
+        "rate": {
+          "format": "double",
+          "type": "number"
+        },
+        "taeg": {
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "AsrdResponse": {
+      "properties": {
+        "age": {
+          "description": "Age of the borrower",
+          "format": "int32",
+          "type": "integer"
+        },
+        "asrd": {
+          "description": "Amount of the repayment insurance",
+          "format": "double",
+          "type": "number"
+        },
+        "duration": {
+          "description": "Loan duration in month",
+          "format": "int32",
+          "type": "integer"
+        },
+        "monthlyPayments": {
+          "description": "Monthly payments",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    },
+    "AsrdRequest": {
+      "properties": {
+        "age": {
+          "description": "Age of the borrower",
+          "format": "int32",
+          "type": "integer"
+        },
+        "duration": {
+          "description": "Loan duration in month",
+          "format": "int32",
+          "type": "integer"
+        },
+        "monthlyPayments": {
+          "description": "Monthly payments",
+          "format": "double",
+          "type": "number"
+        }
+      },
+      "type": "object"
+    }
+  },
+  "consumes": [],
+  "produces": [],
+  "authorizations": {
+    "_default": {
+      "passAs": "header",
+      "keyname": "X--Api-Key",
+      "type": "apiKey"
+    }
+  },
+  "name": "LoanCalculator",
+  "summary": "API Loan Calculator summary",
+  "securityProfile": {
+    "devices": [
+      {
+        "type": "apiKey",
+        "typeDisplayName": "API Key only",
+        "name": "API Key",
+        "order": 1,
+        "keyField": "X--Api-Key",
+        "takeFrom": "HEADER"
+      }
+    ]
+  },
+  "basePaths": [
+    "https://localhost"
+  ],
+  "image": "/api/portal/v1.3/discovery/swagger/apis/699ea8a7-ca6d-410a-9d54-cb4eba79d4d3/image",
+  "state": "unpublished",
+  "cors": true,
+  "expired": false,
+  "deprecated": false,
+  "retirementDate": 0,
+  "tags": {
+    "API_GIT_VERSION": [
+      "@API_GIT_VERSION@"
+    ],
+    "CA_API": [
+      "MSE-0037"
+    ]
+  },
+  "availableApiDefinitions": {
+    "Swagger 1.1": "/discovery/swagger/api/id/699ea8a7-ca6d-410a-9d54-cb4eba79d4d3?swaggerVersion=1.1&filename=LoanCalculator.json",
+    "Swagger 2.0": "/discovery/swagger/api/id/699ea8a7-ca6d-410a-9d54-cb4eba79d4d3?swaggerVersion=2.0&filename=LoanCalculator.json"
+  },
+  "availableSDK": {},
+  "apis": [
+    {
+      "path": "/loan-calculator/rest/v1/loan-simulation/get",
+      "name": "/loan-simulation/get",
+      "operations": [
+        {
+          "id": "b479ab64-c796-4b4b-8b1c-13bab40126d0",
+          "description": "",
+          "httpMethod": "POST",
+          "nickname": "GetLoanSimulation",
+          "summary": "Calculate a loan simulation.",
+          "notes": "This service will allow you to make a basic loan simulation. \nYou need to set the basic information for calculate, like the loan type and the amount or the monthly payment. \nIn fact, it’s a two in one service who offers you two possibilities. Give him an amount and he will send you the monthly payment. Or, conversely, give him the monthly payment to get the loan’s amount.\nBasically, this service will use default values used by  (current rate, default duration who depend by the loan type), but you can easily put your own value and make different simulations with another rate or duration.\n",
+          "responseClass": "SimulationResponse",
+          "errorResponses": [
+            {
+              "code": 200,
+              "reason": "OK",
+              "schema": {
+                "$ref": "#/definitions/SimulationResponse"
+              }
+            },
+            {
+              "code": 400,
+              "reason": "Bad parameters"
+            }
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "tags": {},
+          "securityProfile": {
+            "devices": [
+              {
+                "type": "apiKey",
+                "typeDisplayName": "API Key only",
+                "name": "API Key",
+                "order": 1,
+                "keyField": "X--Api-Key",
+                "takeFrom": "HEADER"
+              }
+            ]
+          },
+          "cors": true,
+          "parameters": [
+            {
+              "description": "request",
+              "required": true,
+              "name": "request",
+              "dataType": "SimulationRequest",
+              "paramType": "body",
+              "allowMultiple": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/loan-calculator/rest/v1/loan-capacity/compute",
+      "name": "/loan-capacity/compute",
+      "operations": [
+        {
+          "id": "bca15d93-d6b4-4e65-87ff-e0fdf00bbc42",
+          "description": "",
+          "httpMethod": "POST",
+          "nickname": "initCapacityValuesUsingPOST_1",
+          "summary": "Compute loan capacity for the given parameters",
+          "notes": "",
+          "responseClass": "CapacitySimulationResponse",
+          "errorResponses": [
+            {
+              "code": 200,
+              "reason": "Successful computation",
+              "schema": {
+                "$ref": "#/definitions/CapacitySimulationResponse"
+              }
+            },
+            {
+              "code": 201,
+              "reason": "Created"
+            },
+            {
+              "code": 400,
+              "reason": "Fields are with validation errors"
+            },
+            {
+              "code": 401,
+              "reason": "Unauthorized"
+            },
+            {
+              "code": 403,
+              "reason": "Forbidden"
+            },
+            {
+              "code": 404,
+              "reason": "Not Found"
+            },
+            {
+              "code": 500,
+              "reason": "Internal server error"
+            }
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "tags": {},
+          "securityProfile": {
+            "devices": [
+              {
+                "type": "apiKey",
+                "typeDisplayName": "API Key only",
+                "name": "API Key",
+                "order": 1,
+                "keyField": "X--Api-Key",
+                "takeFrom": "HEADER"
+              }
+            ]
+          },
+          "cors": true,
+          "parameters": [
+            {
+              "description": "request",
+              "required": true,
+              "name": "request",
+              "dataType": "CapacitySimulationRequest",
+              "paramType": "body",
+              "allowMultiple": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "/loan-calculator/rest/v1/loan-simulation/personal-loan/insurance/get",
+      "name": "/loan-simulation/personal-loan/insurance/get",
+      "operations": [
+        {
+          "id": "ef596b42-ff97-4b47-b045-35ab4363f446",
+          "description": "",
+          "httpMethod": "POST",
+          "nickname": "getInsuranceSimulationUsingPOST",
+          "summary": "Calculate a repayment insurance",
+          "notes": "Calculate a repayment insurance",
+          "responseClass": "AsrdResponse",
+          "errorResponses": [
+            {
+              "code": 200,
+              "reason": "Successful ",
+              "schema": {
+                "$ref": "#/definitions/AsrdResponse"
+              }
+            },
+            {
+              "code": 201,
+              "reason": "Created"
+            },
+            {
+              "code": 400,
+              "reason": "Fields are with validation errors"
+            },
+            {
+              "code": 401,
+              "reason": "Unauthorized"
+            },
+            {
+              "code": 403,
+              "reason": "Forbidden"
+            },
+            {
+              "code": 404,
+              "reason": "Not Found"
+            },
+            {
+              "code": 500,
+              "reason": "Internal server error"
+            }
+          ],
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "*/*"
+          ],
+          "tags": {},
+          "securityProfile": {
+            "devices": [
+              {
+                "type": "apiKey",
+                "typeDisplayName": "API Key only",
+                "name": "API Key",
+                "order": 1,
+                "keyField": "X--Api-Key",
+                "takeFrom": "HEADER"
+              }
+            ]
+          },
+          "cors": true,
+          "parameters": [
+            {
+              "description": "request",
+              "required": true,
+              "name": "request",
+              "dataType": "AsrdRequest",
+              "paramType": "body",
+              "allowMultiple": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "type": "rest"
+}

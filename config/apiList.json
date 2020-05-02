@@ -1,0 +1,30 @@
+[
+    {
+        "name": "API 1",
+        "summary": "API 1 summary",
+        "id": "id1",
+        "uri": "htpp://localhost:3000/api/portal/v1.3/discovery/swagger/api/api1",
+        "type": "rest"
+    },
+    {
+        "name": "API 2",
+        "summary": "API 2 summary",
+        "id": "id2",
+        "uri": "htpp://localhost:3000/api/portal/v1.3/discovery/swagger/api/api2",
+        "type": "rest"
+    },
+    {
+        "name": "API 3",
+        "summary": "API 3 summary",
+        "id": "id2",
+        "uri": "htpp://localhost:3000/api/portal/v1.3/discovery/swagger/api/api3",
+        "type": "rest"
+    },
+	{
+        "name": "API 4",
+        "summary": "API 4 summary",
+        "id": "id2",
+        "uri": "htpp://localhost:3000/api/portal/v1.3/discovery/swagger/api/api4",
+        "type": "rest"
+    },
+]

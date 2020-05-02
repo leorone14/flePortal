@@ -1,0 +1,184 @@
+[
+    {
+        "name": "iHub",
+        "summary": null,
+        "id": "a55a08ef-5cf8-40c7-9c38-d34f781f6eaa",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/iHub",
+        "type": "rest"
+    },
+    {
+        "name": "iHub",
+        "summary": null,
+        "id": "d146e069-a1df-4b13-8646-b28ac63c47e2",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/iHub",
+        "type": "rest"
+    },
+    {
+        "name": "Loans",
+        "summary": null,
+        "id": "7e92895c-4ae0-40a6-81d8-7fc04375aab8",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/Loans",
+        "type": "rest"
+    },
+    {
+        "name": "BglCaptcha",
+        "summary": null,
+        "id": "bb45c0aa-13f8-4c3d-84d5-5c029233ef74",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/BglCaptcha",
+        "type": "rest"
+    },
+    {
+        "name": "VisaRates_",
+        "summary": null,
+        "id": "bcf9ee37-6502-49e2-bb2f-0b8c5f676e1a",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/VisaRates_",
+        "type": "rest"
+    },
+    {
+        "name": "SixCards",
+        "summary": null,
+        "id": "5c51009a-f86e-4fe5-bdde-9c9b59ec95ac",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/SixCards",
+        "type": "rest"
+    },
+    {
+        "name": "LrsV3",
+        "summary": null,
+        "id": "a5b9d47f-a0d5-4d0e-afc4-186dd6113697",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/LrsV3",
+        "type": "rest"
+    },
+    {
+        "name": "LoanCalculator",
+        "summary": null,
+        "id": "699ea8a7-ca6d-410a-9d54-cb4eba79d4d3",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/LoanCalculator",
+        "type": "rest"
+    },
+    {
+        "name": "IHub-Data",
+        "summary": null,
+        "id": "fb4e0f0b-2e2a-45ad-bb7f-8452695ec674",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/IHub-Data",
+        "type": "rest"
+    },
+    {
+        "name": "MPulseSmsOutbound",
+        "summary": null,
+        "id": "2c9b1f23-e14b-4733-8bcb-ddefd3f53961",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/MPulseSmsOutbound",
+        "type": "rest"
+    },
+    {
+        "name": "LoanSimulator",
+        "summary": null,
+        "id": "b2a15522-e196-4357-bd8a-66d2061df1c9",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/LoanSimulator",
+        "type": "rest"
+    },
+    {
+        "name": "IT-Hub",
+        "summary": null,
+        "id": "633d525e-0fc4-4134-b6ab-fc8177db6898",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/IT-Hub",
+        "type": "rest"
+    },
+    {
+        "name": "StetPsd2_OLD",
+        "summary": null,
+        "id": "f1c33c45-fb99-4fec-9925-632773735ad8",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/StetPsd2_OLD",
+        "type": "rest"
+    },
+    {
+        "name": "LrsV3",
+        "summary": null,
+        "id": "77a3f041-dc69-4690-b9a0-7882d60faa8c",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/LrsV3",
+        "type": "rest"
+    },
+    {
+        "name": "WealthArc",
+        "summary": null,
+        "id": "cdbfae0d-7167-4d38-9ff6-9bbb28d6c8f4",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/WealthArc",
+        "type": "rest"
+    },
+    {
+        "name": "Atos",
+        "summary": null,
+        "id": "6605652d-43d5-4255-8855-bd4e61a68d24",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/Atos",
+        "type": "rest"
+    },
+    {
+        "name": "LrsV3",
+        "summary": null,
+        "id": "56b9cb6d-0215-49eb-aade-c3d1c3c5411f",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/LrsV3",
+        "type": "rest"
+    },
+    {
+        "name": "MasterCard",
+        "summary": null,
+        "id": "b320863a-0cd1-430c-808d-4947468a41ef",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/MasterCard",
+        "type": "rest"
+    },
+    {
+        "name": "VisaRates",
+        "summary": null,
+        "id": "256db3db-6ce5-4ec3-b887-4179f13dd540",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/VisaRates",
+        "type": "rest"
+    },
+    {
+        "name": "BglAccount",
+        "summary": null,
+        "id": "cb08770c-7347-4bf4-a14e-2e4cf3a4926e",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/BglAccount",
+        "type": "rest"
+    },
+    {
+        "name": "LoanSimulator",
+        "summary": null,
+        "id": "446735cf-85b4-4c51-8d01-baf11d62e95d",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/LoanSimulator",
+        "type": "rest"
+    },
+    {
+        "name": "LoanCapacitySimulator",
+        "summary": null,
+        "id": "55cb47b3-e8ce-4064-a597-969ea462b849",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/LoanCapacitySimulator",
+        "type": "rest"
+    },
+    {
+        "name": "SixCards",
+        "summary": null,
+        "id": "a1e81ca4-05b6-4c46-83b5-eef728bd73a5",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/SixCards",
+        "type": "rest"
+    },
+    {
+        "name": "StetPsd2",
+        "summary": null,
+        "id": "1ea0c983-baf3-4ad8-8ba2-df2bb9c2f3f5",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/StetPsd2",
+        "type": "rest"
+    },
+    {
+        "name": "Loans",
+        "summary": null,
+        "id": "4d9eee4e-4450-46dc-9e2c-24d97b2fe1eb",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/Loans",
+        "type": "rest"
+    },
+    {
+        "name": "IHub-Data",
+        "summary": null,
+        "id": "76028cfd-ecad-4b5c-8cfc-3c43db2367a4",
+        "uri": "https://sdal030l.bgl.lu:8575/api/portal/v1.3/discovery/swagger/api/IHub-Data",
+        "type": "rest"
+    }
+]

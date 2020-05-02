@@ -1,0 +1,320 @@
+{
+    "id": "id2",
+    "description": "",
+    "apiVersion": "1.3.0",
+    "swaggerVersion": "1.1",
+    "basePath": "https://localhost",
+    "resourcePath": "/ihub/v1",
+    "models": {
+        "SubscribeRequest": {
+            "required": [
+                "rcslNumber",
+                "datasets"
+            ],
+            "properties": {
+                "rcslNumber": {
+                    "type": "string"
+                },
+                "externalId": {
+                    "type": "string"
+                },
+                "datasets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "SIGNALITIC",
+                        "FINANCIAL"
+                    ],
+                    "type": "array"
+                }
+            }
+        },
+        "Subscription": {
+            "required": [
+                "rcslNumber",
+                "status"
+            ],
+            "properties": {
+                "subscriptionId": {
+                    "type": "string"
+                },
+                "rcslNumber": {
+                    "example": "B9249349",
+                    "type": "string"
+                },
+                "externalId": {
+                    "type": "string"
+                },
+                "datasets": {
+                    "items": {
+                        "type": "string"
+                    },
+                    "example": [
+                        "SIGNALITIC",
+                        "FINANCIAL"
+                    ],
+                    "type": "array"
+                },
+                "status": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "consumes": [],
+    "produces": [],
+    "authorizations": {
+        "_default": {
+            "passAs": "header",
+            "keyname": "X--Api-Key",
+            "type": "apiKey"
+        }
+    },
+    "name": "iHub",
+    "summary": "IHUB 1.3.0 summary",
+    "securityProfile": {
+        "devices": [
+            {
+                "type": "apiKey",
+                "typeDisplayName": "API Key only",
+                "name": "API Key",
+                "order": 1,
+                "keyField": "X--Api-Key",
+                "takeFrom": "HEADER"
+            }
+        ]
+    },
+    "basePaths": [
+        "https://localhost"
+    ],
+    "image": "/api/portal/v1.3/discovery/swagger/apis/d146e069-a1df-4b13-8646-b28ac63c47e2/image",
+    "state": "unpublished",
+    "cors": true,
+    "expired": false,
+    "deprecated": false,
+    "retirementDate": 0,
+    "tags": {
+        "API_GIT_VERSION": [
+            "@API_GIT_VERSION@"
+        ],
+        "CA_API": [
+            "MSE-0047"
+        ]
+    },
+    "availableApiDefinitions": {
+        "Swagger 1.1": "/discovery/swagger/api/id/d146e069-a1df-4b13-8646-b28ac63c47e2?swaggerVersion=1.1&filename=iHub.json",
+        "Swagger 2.0": "/discovery/swagger/api/id/d146e069-a1df-4b13-8646-b28ac63c47e2?swaggerVersion=2.0&filename=iHub.json"
+    },
+    "availableSDK": {},
+    "apis": [
+        {
+            "path": "/ihub/v1/subscriptions/{subscriptionId}",
+            "name": "/subscriptions/{subscriptionId}",
+            "operations": [
+                {
+                    "id": "29690bdf-6a00-49f6-a678-db931c7be5d8",
+                    "description": "",
+                    "httpMethod": "DELETE",
+                    "nickname": "unsubscribe",
+                    "summary": "Remove a subscription to a given company",
+                    "notes": "Remove a subscription to a given company identified by a subscription identifier. All updates received by iHub won't be send to the client anymore.",
+                    "responseClass": "void",
+                    "errorResponses": [
+                        {
+                            "code": 204,
+                            "reason": "subscription removed"
+                        },
+                        {
+                            "code": 401,
+                            "reason": "auth token missing or expired"
+                        },
+                        {
+                            "code": 404,
+                            "reason": "no existing subscription for that subscriptionId"
+                        },
+                        {
+                            "code": 409,
+                            "reason": "that subscription is already unsubscribed"
+                        }
+                    ],
+                    "consumes": [],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "tags": {},
+                    "securityProfile": {
+                        "devices": [
+                            {
+                                "type": "apiKey",
+                                "typeDisplayName": "API Key only",
+                                "name": "API Key",
+                                "order": 1,
+                                "keyField": "X--Api-Key",
+                                "takeFrom": "HEADER"
+                            }
+                        ]
+                    },
+                    "cors": true,
+                    "parameters": [
+                        {
+                            "description": "Security Token",
+                            "required": true,
+                            "name": "SEC_TOKEN",
+                            "dataType": "string",
+                            "paramType": "header",
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Propagation Id",
+                            "required": true,
+                            "name": "X--Monitoring-PropagationId",
+                            "dataType": "string",
+                            "paramType": "header",
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Current monitoring Path",
+                            "required": true,
+                            "name": "X--Monitoring-Path",
+                            "dataType": "string",
+                            "paramType": "header",
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Monitoring \"To application\"",
+                            "required": true,
+                            "name": "X--Monitoring-To",
+                            "dataType": "string",
+                            "paramType": "header",
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Bearer {access_token}",
+                            "required": false,
+                            "name": "Authorization",
+                            "dataType": "string",
+                            "paramType": "header",
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "the subscription technical identifier (provided at creation)",
+                            "required": true,
+                            "name": "subscriptionId",
+                            "dataType": "string",
+                            "paramType": "path",
+                            "allowMultiple": false
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "path": "/ihub/v1/subscriptions",
+            "name": "/subscriptions",
+            "operations": [
+                {
+                    "id": "6fc7c35c-b100-4cbf-8ca2-1ad8e9a093f5",
+                    "description": "",
+                    "httpMethod": "POST",
+                    "nickname": "subscribe",
+                    "summary": "Submit new subscriptions",
+                    "notes": "Submit new subscriptions for a company identified by its RCSL number. The client could provide an external ID for integration purpose.",
+                    "responseClass": "Subscription",
+                    "errorResponses": [
+                        {
+                            "code": 201,
+                            "reason": "subscriptions created",
+                            "schema": {
+                                "$ref": "#/definitions/Subscription"
+                            }
+                        },
+                        {
+                            "code": 400,
+                            "reason": "invalid request content"
+                        },
+                        {
+                            "code": 401,
+                            "reason": "auth token missing or expired"
+                        },
+                        {
+                            "code": 409,
+                            "reason": "another subscription exists for the given data"
+                        }
+                    ],
+                    "consumes": [
+                        "application/json"
+                    ],
+                    "produces": [
+                        "application/json"
+                    ],
+                    "tags": {},
+                    "securityProfile": {
+                        "devices": [
+                            {
+                                "type": "apiKey",
+                                "typeDisplayName": "API Key only",
+                                "name": "API Key",
+                                "order": 1,
+                                "keyField": "X--Api-Key",
+                                "takeFrom": "HEADER"
+                            }
+                        ]
+                    },
+                    "cors": true,
+                    "parameters": [
+                        {
+                            "description": "Security Token",
+                            "required": true,
+                            "name": "SEC_TOKEN",
+                            "dataType": "string",
+                            "paramType": "header",
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Propagation Id",
+                            "required": true,
+                            "name": "X--Monitoring-PropagationId",
+                            "dataType": "string",
+                            "paramType": "header",
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Current monitoring Path",
+                            "required": true,
+                            "name": "X--Monitoring-Path",
+                            "dataType": "string",
+                            "paramType": "header",
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Monitoring \"To application\"",
+                            "required": true,
+                            "name": "X--Monitoring-To",
+                            "dataType": "string",
+                            "paramType": "header",
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "Bearer {access_token}",
+                            "required": false,
+                            "name": "Authorization",
+                            "dataType": "string",
+                            "paramType": "header",
+                            "allowMultiple": false
+                        },
+                        {
+                            "description": "",
+                            "required": false,
+                            "name": "new subscriptions",
+                            "dataType": "SubscribeRequest",
+                            "paramType": "body",
+                            "allowMultiple": false
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "type": "rest"
+}
