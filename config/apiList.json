@@ -16,14 +16,21 @@
     {
         "name": "API 3",
         "summary": "API 3 summary",
-        "id": "id2",
+        "id": "id3",
         "uri": "htpp://localhost:3000/api/portal/v1.3/discovery/swagger/api/api3",
         "type": "rest"
     },
 	{
         "name": "API 4",
         "summary": "API 4 summary",
-        "id": "id2",
+        "id": "id4",
+        "uri": "htpp://localhost:3000/api/portal/v1.3/discovery/swagger/api/api4",
+        "type": "rest"
+    },
+    {
+        "name": "API 5",
+        "summary": "API 5 summary",
+        "id": "id5",
         "uri": "htpp://localhost:3000/api/portal/v1.3/discovery/swagger/api/api4",
         "type": "rest"
     }
