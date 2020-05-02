@@ -26,5 +26,5 @@
         "id": "id2",
         "uri": "htpp://localhost:3000/api/portal/v1.3/discovery/swagger/api/api4",
         "type": "rest"
-    },
+    }
 ]
