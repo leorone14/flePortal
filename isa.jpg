@@ -1,0 +1,717 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "2.0.6",
+    "title": "KYC-Data",
+    "contact": {
+      "email": "bpi-it-support-api@bgl.lu"
+    },
+    "description": "API KYC-Data : \n\nThis API will be called by partners to:\n  - update a Primary Contract\n  - create a Natural Person\n  - update a Natural Person\n  - update of role (related party) of natural persons.\n  - ...\n  \nThis API is secured with an oauth access_token.\nTo obtain this token, you must access the following url:\n\n*  https://@OAUTH_HOST@/oauth/v1/token\n\n  where @OAUTH_HOST= api-oauth-int.bgl.lu in test. \n  \nThe POST request is define as below:\n**Header**:\n * **Content-Type**: application/x-www-form-urlencoded\n \n**Body**:\n  * **grant_type**: client_credentials\n  * **client_id**: your client id\n  * **client_secret**: your client secret\n \n\nThe response will contain the following fields\n  * **access_token** : this token should be given as a header to all routes requiring authentication (in the form: \"Authorization: Bearer TOKEN\")\n  * **token_type**: Bearer\n  * **expires_in**: duration in seconds after which the access token will become invalid\n  * **scope**: resource.WRITE resource.READ\n  \n"
+  },
+  "tags": [
+    {
+      "name": "PrimaryContract"
+    }
+  ],
+  "basePath": "/rest/v1",
+  "host": "localhost:8080",
+  "schemes": [
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "paths": {
+    "/primary-contracts/{contractId}": {
+      "put": {
+        "tags": [
+          "PrimaryContract"
+        ],
+        "summary": "Update a Primary Contract",
+        "description": "Update a Primary Contract",
+        "operationId": "primaryContractUpdate",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer {access_token}"
+          },
+          {
+            "in": "path",
+            "name": "contractId",
+            "description": "External Primary contract id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "UpdatePrimaryContractRequest",
+            "schema": {
+              "$ref": "#/definitions/UpdatePrimaryContractRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "405": {
+            "$ref": "#/responses/405"
+          },
+          "406": {
+            "$ref": "#/responses/406"
+          },
+          "408": {
+            "$ref": "#/responses/408"
+          },
+          "429": {
+            "$ref": "#/responses/429"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          },
+          "503": {
+            "$ref": "#/responses/503"
+          }
+        }
+      }
+    },
+    "/natural-persons/{thirdPartyId}": {
+      "put": {
+        "tags": [
+          "Third-Party"
+        ],
+        "summary": "Update a Natural Person",
+        "description": "Update a Natural Person",
+        "operationId": "ThirdPartyUpdate",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer {access_token}"
+          },
+          {
+            "in": "path",
+            "name": "thirdPartyId",
+            "description": "External Third-Party Id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "UpdateNaturalPersonRequest",
+            "schema": {
+              "$ref": "#/definitions/UpdateNaturalPersonRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "405": {
+            "$ref": "#/responses/405"
+          },
+          "406": {
+            "$ref": "#/responses/406"
+          },
+          "408": {
+            "$ref": "#/responses/408"
+          },
+          "429": {
+            "$ref": "#/responses/429"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          },
+          "503": {
+            "$ref": "#/responses/503"
+          }
+        }
+      }
+    },
+    "/natural-persons": {
+      "post": {
+        "tags": [
+          "Third-Party"
+        ],
+        "summary": "Create a Natural Person",
+        "description": "Create a Natural Person",
+        "operationId": "thirdPartyCreate",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "UpdateNaturalPersonRequest",
+            "schema": {
+              "$ref": "#/definitions/CreateNaturalPersonRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "405": {
+            "$ref": "#/responses/405"
+          },
+          "406": {
+            "$ref": "#/responses/406"
+          },
+          "408": {
+            "$ref": "#/responses/408"
+          },
+          "429": {
+            "$ref": "#/responses/429"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          },
+          "503": {
+            "$ref": "#/responses/503"
+          }
+        }
+      }
+    },
+    "/roles/{roleId}": {
+      "put": {
+        "tags": [
+          "Roles"
+        ],
+        "summary": "Update a of role (related party) of natural persons.",
+        "description": "Update a of role (related party) of natural persons.",
+        "operationId": "thirdPatyRoleUpdate",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "type": "string",
+            "description": "Bearer {access_token}"
+          },
+          {
+            "in": "path",
+            "name": "roleId",
+            "description": "iHub role Id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "UpdateRoleRequest",
+            "schema": {
+              "$ref": "#/definitions/UpdateRoleRequest"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted"
+          },
+          "400": {
+            "$ref": "#/responses/400"
+          },
+          "401": {
+            "$ref": "#/responses/401"
+          },
+          "403": {
+            "$ref": "#/responses/403"
+          },
+          "404": {
+            "$ref": "#/responses/404"
+          },
+          "405": {
+            "$ref": "#/responses/405"
+          },
+          "406": {
+            "$ref": "#/responses/406"
+          },
+          "408": {
+            "$ref": "#/responses/408"
+          },
+          "429": {
+            "$ref": "#/responses/429"
+          },
+          "500": {
+            "$ref": "#/responses/500"
+          },
+          "503": {
+            "$ref": "#/responses/503"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "UpdateData": {
+      "description": "At least one entry must be present!!!",
+      "required": [
+        "language",
+        "addressStreet",
+        "addressTown",
+        "addressCountry"
+      ],
+      "properties": {
+        "language": {
+          "type": "string",
+          "description": "ISO 639-3 : language code\n",
+          "pattern": "^([a-z]{3,3})$",
+          "example": "fra"
+        },
+        "addressNumber": {
+          "type": "string",
+          "maxLength": 10,
+          "description": "Street number"
+        },
+        "addressStreet": {
+          "type": "string",
+          "description": "Street name"
+        },
+        "addressComplements": {
+          "type": "string",
+          "maxLength": 12,
+          "description": "Street complement"
+        },
+        "addressPostalCode": {
+          "type": "string",
+          "maxLength": 8,
+          "description": "Postal Code"
+        },
+        "addressTown": {
+          "type": "string",
+          "maxLength": 30
+        },
+        "addressCountry": {
+          "description": "ISO 3166-2 : Country code\nSome additional country code will be added by BGL due to operational reasons.\nThis list will be updated asap.\n",
+          "type": "string",
+          "pattern": "^([A-Z]{2,2})$"
+        },
+        "addressPostBox": {
+          "type": "string",
+          "maxLength": 8,
+          "description": "Postal Box"
+        }
+      }
+    },
+    "StaticDataItem": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "BGL UID of the static data:\n- Gender\n- Title\n- LastNames\n- FirstName\n- BirthDate\n- BirthPlace\n- BirthCountry\n- Citizenship1\n- Citizenship2\n- MaritalStatus\n- LegalStatus\n- LegalAddress\n- LegalAddressStartDate\n- ContactAddress\n- MainPhoneNumber\n- SecondaryPhoneNumber\n- MobilePhoneNumber\n- ProfessionalPhoneNumber\n- FaxNumber\n- ProfessionalFaxNumber\n- MainEmail\n- SecondaryEmail\n- Website\n- ActivitySector\n- ActivityCountry\n- MscCountry\n- IsSubjectToVat\n- VatNumber\n- HasNoVatReason\n- InsiderInformation\n- TaxCountry\n- IsCrsHighValue\n- IsFatcaHighValue\n- IsCrsPreexistingClient\n- IsFatcaPreexistingClient\n- IsUsPerson\n- UsPersonSince\n- IsBasicPaymentAccountEligible\n- IsDeceased\n- KycSegment\n"
+        },
+        "value": {
+          "type": "object",
+          "description": "Value for the static data \nThe value type depends on the static data type:\n- UID : type = string\n- String : type = string\n- BOOLEAN: type = boolean\n- NUMBER: type= number\n- DATE: an ISO 8601 date (YYYY-MM-DD) type: string format: date\n- OBJECT : type: object"
+        }
+      }
+    },
+    "UpdateStaticRoleDataItem": {
+      "type": "object",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "BGL UID of the static role data:\n- RoleStatus\n- EndDate\n- SubRole\n- OwershipPercentage\n- ReferenceDocument\n- EndType\n- FamilyRelationship\n"
+        },
+        "value": {
+          "type": "object",
+          "description": "Value for the static data \nThe value type depends on the static data type:\n- UID : type = string\n- String : type = string\n- BOOLEAN: type = boolean\n- NUMBER: type= number\n- DATE: an ISO 8601 date (YYYY-MM-DD) type: string format: date\n- OBJECT : type: object          "
+        }
+      }
+    },
+    "UpdatePrimaryContractRequest": {
+      "required": [
+        "messageId",
+        "bglPrimaryContractId",
+        "partnerPrimaryContractId",
+        "updateTimestamp",
+        "source",
+        "subSource",
+        "updateData"
+      ],
+      "properties": {
+        "messageId": {
+          "description": "Unique Id of the message",
+          "type": "string",
+          "example": "1231"
+        },
+        "bglPrimaryContractId": {
+          "type": "string",
+          "pattern": "^(\\d{1,6})$",
+          "maxLength": 6,
+          "example": "123456"
+        },
+        "partnerPrimaryContractId": {
+          "type": "string",
+          "description": "Technical Id of the primary contract in the partner system"
+        },
+        "updateTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp Format\nTimestamps are expected in a format respecting ISO 8601 standard without offset, more precisely the expected format is:\nyyyy-mm-ddThh:mm:ss.mmm\nExpected time zone Luxembourg / Paris / Bruxelles : \n•  CET (GMT+1 for winter time)\n•  CEST (GMT+2 for summer time)\nMilliseconds must be provided on 3 positions.        ",
+          "example": "yyyy-mm-ddThh:mm:ss.mmm"
+        },
+        "source": {
+          "description": "Data source",
+          "type": "string",
+          "example": "IHUB"
+        },
+        "subSource": {
+          "description": "Data Sub-source.",
+          "type": "string",
+          "example": "IHUB"
+        },
+        "updateData": {
+          "$ref": "#/definitions/UpdateData"
+        }
+      }
+    },
+    "UpdateNaturalPersonRequest": {
+      "required": [
+        "messageId",
+        "bglThirdPartyId",
+        "partnerThirdPartyId",
+        "updateTimestamp",
+        "source",
+        "subSource",
+        "updateNaturalPersonData"
+      ],
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "description": "Unique Id of the message",
+          "type": "string"
+        },
+        "bglThirdPartyId": {
+          "description": "BGL Functional ThirdParty Id",
+          "type": "string"
+        },
+        "partnerThirdPartyId": {
+          "type": "string",
+          "description": "Technical Id of the ThirdParty in the partner system."
+        },
+        "updateTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp Format\nTimestamps are expected in a format respecting ISO 8601 standard without offset, more precisely the expected format is:\nyyyy-mm-ddThh:mm:ss.mmm\nExpected time zone Luxembourg / Paris / Bruxelles : \n•  CET (GMT+1 for winter time)\n•  CEST (GMT+2 for summer time)\nMilliseconds must be provided on 3 positions.        "
+        },
+        "source": {
+          "description": "Data source",
+          "type": "string",
+          "example": "IHUB"
+        },
+        "subSource": {
+          "description": "Data Sub-source.",
+          "type": "string",
+          "example": "IHUB"
+        },
+        "updateNaturalPersonData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StaticDataItem"
+          }
+        }
+      }
+    },
+    "CreateNaturalPersonRequest": {
+      "required": [
+        "messageId",
+        "partnerThirdPartyId",
+        "updateTimestamp",
+        "source",
+        "subSource",
+        "createNaturalPersonData"
+      ],
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "description": "Unique Id of the message",
+          "type": "string"
+        },
+        "partnerThirdPartyId": {
+          "type": "string",
+          "description": "Technical Id of the ThirdParty in the partner system."
+        },
+        "updateTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Update Timestamp"
+        },
+        "source": {
+          "description": "Data . In this case, always IHUB.",
+          "type": "string"
+        },
+        "subSource": {
+          "description": "Data Sub-source.",
+          "type": "string"
+        },
+        "updateNaturalPersonData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/StaticDataItem"
+          }
+        }
+      }
+    },
+    "UpdateRoleRequest": {
+      "required": [
+        "messageId",
+        "roleId",
+        "bglSubjectId",
+        "partnerSubjectId",
+        "bglThirdPartyObjectId",
+        "partnerThirdPartyObjectId",
+        "updateTimestamp",
+        "source",
+        "subSource",
+        "updateRoleData"
+      ],
+      "type": "object",
+      "properties": {
+        "messageId": {
+          "description": "Unique Id of the message",
+          "type": "string"
+        },
+        "roleId": {
+          "description": "role Id",
+          "type": "string"
+        },
+        "roleType": {
+          "description": "role Type",
+          "type": "string",
+          "enum": [
+            "AccountHolder",
+            "LegalGuardian",
+            "PowerOfAttorney",
+            "ServiceBearer",
+            "ThirdPerson"
+          ]
+        },
+        "bglSubjectId": {
+          "description": "Functional Id for Third party or Contract BGL.",
+          "type": "string"
+        },
+        "partnerSubjectId": {
+          "type": "string",
+          "description": "Functional Id for Third party or Contract Partner."
+        },
+        "bglThirdPartyObjectId": {
+          "type": "string",
+          "description": "Functional Id for Third party."
+        },
+        "partnerThirdPartyObjectId": {
+          "type": "string",
+          "description": "Functional Id for Third party."
+        },
+        "updateTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp Format\nTimestamps are expected in a format respecting ISO 8601 standard without offset, more precisely the expected format is:\n  yyyy-mm-ddThh:mm:ss.mmm\n  Expected time zone Luxembourg / Paris / Bruxelles : \n  •  CET (GMT+1 for winter time)\n  •  CEST (GMT+2 for summer time)\n  Milliseconds must be provided on 3 positions."
+        },
+        "source": {
+          "description": "Data source",
+          "type": "string",
+          "example": "IHUB"
+        },
+        "subSource": {
+          "description": "Data Sub-source.",
+          "type": "string",
+          "example": "IHUB"
+        },
+        "updateRoleData": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/UpdateStaticRoleDataItem"
+          }
+        }
+      },
+      "example": "{\n  \"messageId\": \"110e8400-e29b-11d4-a716-446655440000\",\n  \"roleId\": \"4169092e-c2be-11eb-8529-0242ac130003\",\n  \"roleType\": \"AccountHolder\",\n  \"bglSubjectId\": \"654321\",\n  \"partnerSubjectId\": \"6be72a50-c2be-11eb-8529-0242ac130003\",\n  \"bglThirdPartyObjectId\": \"12345678\",\n  \"partnerThirdPartyObjectId\": \"4e0d6b26-48c2-403e-8e8f-38aaf1b81f6b\",\n  \"updateTimestamp\": \"2021-02-13T12:11:10.001\",\n  \"source\": \"IHUB\",\n  \"subSource\": \"IHUB\",\n  \"updateRoleData\": [{\n      \"key\": \"SubRole\",\n      \"value\": \"BareOwner\"\n    }\n  ]\n}"
+    },
+    "ErrorModel": {
+      "description": "Generic error report structure",
+      "type": "object",
+      "required": [
+        "status",
+        "message"
+      ],
+      "properties": {
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Timestamp Format\nTimestamps are expected in a format respecting ISO 8601 standard without offset, more precisely the expected format is:\nyyyy-mm-ddThh:mm:ss.mmm\nExpected time zone Luxembourg / Paris / Bruxelles : \n•  CET (GMT+1 for winter time)\n•  CEST (GMT+2 for summer time)\nMilliseconds must be provided on 3 positions."
+        },
+        "status": {
+          "description": "HTTP error code",
+          "type": "integer",
+          "format": "int32"
+        },
+        "error": {
+          "description": "HTTP error text",
+          "type": "string",
+          "maxLength": 140
+        },
+        "message": {
+          "description": "HTTP textual reason phrase",
+          "type": "string",
+          "maxLength": 140
+        },
+        "path": {
+          "description": "Relevant path that was used",
+          "type": "string",
+          "maxLength": 140
+        }
+      },
+      "example": {
+        "timestamp": "2020-08-04T16:06:27.499",
+        "status": 400,
+        "error": "Bad Request",
+        "message": "Missing parameters",
+        "path": "/v1/primary-contracts/33981ecb-8ad4-4428-8cc3-ea4c343aeaff"
+      }
+    }
+  },
+  "responses": {
+    "204": {
+      "description": "No content.",
+      "headers": {
+        "X-Request-ID": {
+          "type": "string",
+          "description": "Correlation header to be set in a request and retrieved in the relevant response\n"
+        }
+      }
+    },
+    "400": {
+      "description": "Bad Request",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "401": {
+      "description": "Unauthorized, authentication failure.",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "403": {
+      "description": "Forbidden, authentication successful but access to resource is not allowed.",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "404": {
+      "description": "Not found, no request available.",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "405": {
+      "description": "Method Not Allowed.",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "406": {
+      "description": "Not Acceptable.",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "408": {
+      "description": "Request Timeout.",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "409": {
+      "description": "Conflict. \nThe request could not be completed due to a conflict with the current state of the target resource.\n",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "429": {
+      "description": "Too many requests.",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "500": {
+      "description": "Internal server error.",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "501": {
+      "description": "Not Implemented. \nThis code should be used when the entry point is implemented but cannot provide a result, given the context.\nWhen the entry point is not implemented at all, HTTP400 will be returned.\n",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    },
+    "503": {
+      "description": "Service unavailable.",
+      "schema": {
+        "$ref": "#/definitions/ErrorModel"
+      }
+    }
+  },
+  "security": [
+    {
+      "oauth-client-credentials": []
+    }
+  ],
+  "securityDefinitions": {
+    "oauth-client-credentials": {
+      "type": "oauth2",
+      "flow": "application",
+      "tokenUrl": "https://@OAUTH_HOST@/oauth/v1/token",
+      "scopes": {
+        "read": "resource.READ",
+        "write": "resource.WRITE"
+      }
+    }
+  }
+}
